@@ -18,9 +18,8 @@ Enable bundle , add to `AppKernel.php`:
 Add default parameters to `config.yml`:
 ``` yaml
 twig:
-    form:
-        resources:
-            - 'SolutionCodeMirrorBundle:Form:code_mirror_widget.html.twig'
+    form_themes:
+		- 'SolutionCodeMirrorBundle:Form:code_mirror_widget.html.twig'
 
 assetic:
     bundles:
@@ -34,9 +33,9 @@ solution_code_mirror:
         lineWrapping: true
         theme: base16-dark
     mode_dirs:
-        - @SolutionCodeMirrorBundle/Resources/public/js/mode
+        - "@SolutionCodeMirrorBundle/Resources/public/js/mode"
     themes_dirs:
-        - @SolutionCodeMirrorBundle/Resources/public/css/theme
+        - "@SolutionCodeMirrorBundle/Resources/public/css/theme"
 ```
 
 
