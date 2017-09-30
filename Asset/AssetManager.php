@@ -2,6 +2,8 @@
 
 namespace Solution\CodeMirrorBundle\Asset;
 
+use Symfony\Component\Config\FileLocatorInterface;
+use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\HttpKernel\Config\FileLocator;
 use Symfony\Component\Finder\Finder;
 use Doctrine\Common\Cache\PhpFileCache;
@@ -26,7 +28,15 @@ class AssetManager
 
     protected $env;
 
-    function __construct($fileLocator, $modeDirs, $themesDirs, $cacheDir, $env)
+    /**
+     * AssetManager constructor.
+     * @param FileLocatorInterface $fileLocator
+     * @param array $modeDirs
+     * @param array $themesDirs
+     * @param string $cacheDir
+     * @param string $env
+     */
+    function __construct(FileLocatorInterface $fileLocator, $modeDirs, $themesDirs, $cacheDir, $env)
     {
         $this->fileLocator = $fileLocator;
         $this->modeDirs = $modeDirs;
@@ -103,8 +113,9 @@ class AssetManager
 
     /**
      * Parse editor modes from dir
+     * @param SplFileInfo $file
      */
-    protected function addModesFromFile($file)
+    protected function addModesFromFile(SplFileInfo $file)
     {
         $jsContent = $file->getContents();
         preg_match_all('#defineMIME\(\s*(\'|")([^\'"]+)(\'|")#', $jsContent, $modes);
@@ -127,6 +138,7 @@ class AssetManager
         foreach ($this->themesDirs as $dir) {
             $absDir = $this->fileLocator->locate($dir);
             $finder = Finder::create()->files()->in($absDir)->name('*.css');
+            /** @var SplFileInfo $file */
             foreach ($finder as $file) {
                 $this->addTheme($file->getBasename('.css'), $file->getPathname());
             }

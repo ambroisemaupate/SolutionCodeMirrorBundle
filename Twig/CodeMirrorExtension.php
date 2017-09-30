@@ -1,10 +1,10 @@
 <?php
 namespace Solution\CodeMirrorBundle\Twig;
 
+use Solution\CodeMirrorBundle\Asset\AssetManager;
 use Zend\Json\Json;
 use Zend\Json\Expr;
 
-use Assetic\AssetManager;
 use Assetic\Asset\FileAsset;
 
 class CodeMirrorExtension extends \Twig_Extension
@@ -14,7 +14,11 @@ class CodeMirrorExtension extends \Twig_Extension
      */
     protected $assetManager;
 
-    function __construct($assetManager)
+    /**
+     * CodeMirrorExtension constructor.
+     * @param AssetManager $assetManager
+     */
+    function __construct(AssetManager $assetManager)
     {
         $this->assetManager = $assetManager;
     }
@@ -50,7 +54,7 @@ class CodeMirrorExtension extends \Twig_Extension
 
     public function code_mirror_get_css_theme($parameters)
     {
-        $am = new AssetManager();
+        $am = new \Assetic\AssetManager();
         $am->set('theme', new FileAsset($parameters['theme']));
         $am->get('theme');
 
