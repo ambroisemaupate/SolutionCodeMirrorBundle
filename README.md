@@ -23,11 +23,6 @@ twig:
     form_themes:
         - 'SolutionCodeMirrorBundle:Form:code_mirror_widget.html.twig'
 
-assetic:
-    bundles:
-        - # ... other bundles
-        - SolutionCodeMirrorBundle
-
 solution_code_mirror:
     parameters:
         mode: text/html
@@ -43,7 +38,7 @@ solution_code_mirror:
 
 Install assets:
 ``` bash
-$ ./app/console assets:install web --symlink
+$ ./app/console assets:install web --symlink --relative
 ```
 
 ### Usage

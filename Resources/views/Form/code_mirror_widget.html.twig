@@ -4,8 +4,8 @@
     {% spaceless %}
         <textarea id="{{ id }}" name="{{ full_name }}">{{ data }}</textarea>
         {% if code_mirror_is_first_call() %}
-
             <script type="text/javascript" src="{{ asset('bundles/solutioncodemirror/js/codemirror.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/solutioncodemirror/js/mode/markdown/markdown.js') }}"></script>
         {% endif %}
         {% for mode_path in code_mirror_get_js_mode(parameters) %}
             <script src="{{ asset(mode_path) }}" type="text/javascript"></script>
@@ -13,9 +13,6 @@
 
         {% if code_mirror_get_css_theme(parameters) %}
             {% set theme = code_mirror_get_css_theme(parameters) %}
-
-
-
             <link rel="stylesheet" href="{{ asset('bundles/solutioncodemirror/css/theme/'~ parameters.theme ~'.css') }}" />
             <link rel="stylesheet" href="{{ asset('bundles/solutioncodemirror/css/codemirror.css') }}" />
         {% endif %}
