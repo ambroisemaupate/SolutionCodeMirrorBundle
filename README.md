@@ -21,7 +21,7 @@ Add default parameters to `config.yml`:
 ``` yaml
 twig:
     form_themes:
-		- 'SolutionCodeMirrorBundle:Form:code_mirror_widget.html.twig'
+        - 'SolutionCodeMirrorBundle:Form:code_mirror_widget.html.twig'
 
 assetic:
     bundles:
