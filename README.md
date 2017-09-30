@@ -3,7 +3,7 @@ SolutionCodeMirrorBundle [![Build Status](https://api.travis-ci.org/f1nder/Solut
 
 Integration  [CodeMirror](http://codemirror.net/) editor in you symfony2 project.
 
-###Install
+### Install
 
 Just add the following line to your projects composer.json require section, and update vendors:
 ``` js
@@ -14,7 +14,9 @@ Enable bundle , add to `AppKernel.php`:
 ``` php
  new Solution\CodeMirrorBundle\SolutionCodeMirrorBundle()
 ```
-###Configuration
+
+### Configuration
+
 Add default parameters to `config.yml`:
 ``` yaml
 twig:
@@ -44,7 +46,8 @@ Install assets:
 $ ./app/console assets:install web --symlink
 ```
 
-###Usage
+### Usage
+
 ``` php
  $builder->add('content', 'code_mirror', array(
     'required' => true,
